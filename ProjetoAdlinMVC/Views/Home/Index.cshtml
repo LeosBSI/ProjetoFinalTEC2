@@ -2,30 +2,39 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="jumbotron" align="center">
+    <h1>Adlin Plásticos</h1>
+    <p class="lead">Fazendo a diferença.</p>
+    <img src="https://thumbs.dreamstime.com/z/pessoal-hospitalar-o-grupo-de-doze-homens-e-mulheres-medica-e-nutre-povos-m%C3%A9dicos-ilustra%C3%A7%C3%A3o-lisa-do-vetor-do-estilo-83912574.jpg" height="150" width="250" img-align="middle" />
+    <p>@Html.ActionLink("Venha conhecer nossos serviços", "Index", "Cliente", new { area = "" }, new { @class = "btn btn-primary btn-lg" })</p>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+<div class="row" align="center">
+    <li></li>
+</div>
+
+<div class="row" align="center">
+    <h2>Produtos</h2>
+    <p>Acesso aos produtos.</p>
+    <p>@Html.ActionLink("Produtos", "Index", "Produto", new { area = "" }, new { @class = "btn btn-primary" })</p>
+</div>
+
+<div class="row" align="center">
+    <li></li>
+</div>
+
+<div class="row" align="center">
+    <h2>Fornecedores</h2>
+    <p>Acesso aos fornecedores.</p>
+    <p>@Html.ActionLink("Fornecedores", "Index", "Fornecedor", new { area = "" }, new { @class = "btn btn-primary" })</p>
+</div>
+
+<div class="row" align="center">
+    <li></li>
+</div>
+
+<div class="row" align="center">
+    <h2>Loja Virtual</h2>
+    <p>Acesso a loja virtual.</p>
+    <p>@Html.ActionLink("Loja Virtual", "Index", "LojaVirtual", new { area = "" }, new { @class = "btn btn-primary" })</p>
 </div>
