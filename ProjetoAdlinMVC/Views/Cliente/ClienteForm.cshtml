@@ -1,0 +1,29 @@
+﻿@model ProjetoAdlinMVC.Models.Cliente
+@{
+    ViewBag.Title = "Novo Cliente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Save", "Cliente"))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Nome)
+        @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Nome)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cpf)
+        @Html.TextBoxFor(m => m.Cpf, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Cpf)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

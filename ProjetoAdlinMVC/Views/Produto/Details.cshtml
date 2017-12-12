@@ -1,0 +1,10 @@
+﻿@model ProjetoAdlinMVC.Models.Produto
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Nome</h2>
+<p>Tipo Produto: @Model.TipoProduto</p>
+<p>Preço: @Model.Preco</p>
+<p>Fornecedor: @Model.Fornecedor.NomeEmpresa</p>

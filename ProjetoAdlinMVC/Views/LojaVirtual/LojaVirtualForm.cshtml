@@ -1,0 +1,28 @@
+﻿@model ProjetoAdlinMVC.Models.LojaVirtual
+@{
+    ViewBag.Title = "Nova Loja Virtual";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Save", "LojaVirtual"))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.NomeLoja)
+        @Html.TextBoxFor(m => m.NomeLoja, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.NomeLoja)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cnpj)
+        @Html.TextBoxFor(m => m.Cnpj, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Cnpj)
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

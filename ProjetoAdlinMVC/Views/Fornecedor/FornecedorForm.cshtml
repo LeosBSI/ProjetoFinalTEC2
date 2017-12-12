@@ -1,0 +1,34 @@
+﻿@model ProjetoAdlinMVC.Models.Fornecedor
+@{
+    ViewBag.Title = "Novo Fornecedor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Save", "Fornecedor"))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.NomeEmpresa)
+        @Html.TextBoxFor(m => m.NomeEmpresa, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.NomeEmpresa)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cnpj)
+        @Html.TextBoxFor(m => m.Cnpj, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Cnpj)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cidade)
+        @Html.TextBoxFor(m => m.Cidade, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Cidade)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

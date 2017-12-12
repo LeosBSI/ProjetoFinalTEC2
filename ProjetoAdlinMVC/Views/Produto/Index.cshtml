@@ -1,0 +1,77 @@
+﻿@model List<ProjetoAdlinMVC.Models.Produto>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Produtos</h2>
+
+<p>
+    @Html.ActionLink("Novo Produto", "New", null, new { @class = "btn btn-primary" })
+</p>
+
+@if (@Model.Any())
+{
+    <table id="produtos" class="table table-bordered table-hover">
+
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Tipo</th>
+                <th>Preço</th>
+                <th>Fornecedor</th>
+                <th>Editar</th>
+                <th>Remover</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var produto in Model)
+            {
+                <tr>
+                    <td> @Html.ActionLink(@produto.Nome, "Details", new { produto.Id })</td>
+                    <td> @produto.TipoProduto</td>
+                    <td> @produto.Preco</td>
+                    <td> @produto.Fornecedor.NomeEmpresa</td>
+                    <td>
+                        <p>
+                            @Html.ActionLink("Editar", "Edit", new { produto.Id }, new { @class = "btn btn-primary" })
+                        </p>
+                    </td>
+                    <td>
+                        <button data-produto-id="@produto.Id  "
+                                class="btn-link js-delete">Remover</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Não existem produtos cadastrados.</p>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#produtos").on("click", ".js-delete",
+                function () {
+                    var button = $(this);
+                    bootbox.confirm("Tem certeza que quer remover este cliente?",
+                        function (result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/produto/delete/" + button.attr("data-produto-id"),
+                                    method: "GET",
+                                    success: function () {
+                                        button.parents("tr").remove();
+                                    }
+                                });
+                            }
+                        });
+                });
+        });
+    </script>
+}

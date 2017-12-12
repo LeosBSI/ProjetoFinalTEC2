@@ -1,0 +1,47 @@
+﻿@model ProjetoAdlinMVC.ViewModels.ProdutoFormViewModel
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Save", "Produto"))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Produto.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Produto.Nome)
+        @Html.TextBoxFor(m => m.Produto.Nome, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Produto.Nome)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Produto.TipoProduto)
+        @Html.TextBoxFor(m => m.Produto.TipoProduto, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Produto.TipoProduto)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Produto.Preco)
+        @Html.TextBoxFor(m => m.Produto.Preco, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Produto.Preco)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Produto.FornecedorId)
+        @Html.DropDownListFor(m => m.Produto.FornecedorId,
+            new SelectList(Model.Fornecedores, "Id", "NomeEmpresa"),
+            "Escolha", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Produto.FornecedorId)
+
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+
+
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
